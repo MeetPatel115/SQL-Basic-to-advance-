@@ -1,0 +1,3 @@
+SELECT COUNTRY, COUNT(FIRST_NAME)
+FROM customers
+GROUP BY country
