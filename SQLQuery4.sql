@@ -17,3 +17,23 @@ SELECT FirstName,
 LastName
 FROM Sales.Employees;
 
+/* UNION ALL*/
+
+SELECT FirstName,
+LastName
+FROM Sales.Customers
+UNION ALL
+SELECT FirstName,
+LastName
+FROM Sales.Employees
+
+
+/* find the emplyees that are not the customer */
+
+SELECT FirstName,
+LastName
+FROM Sales.Employees
+Except
+SELECT FirstName,
+LastName
+From Sales.Customers;
