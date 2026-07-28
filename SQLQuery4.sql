@@ -37,3 +37,14 @@ Except
 SELECT FirstName,
 LastName
 From Sales.Customers;
+
+/* opposite of finding customer that doesnot have employees*/
+SELECT FirstName,
+LastName
+From Sales.Customers
+Except
+SELECT FirstName,
+LastName
+FROM Sales.Employees;
+
+
