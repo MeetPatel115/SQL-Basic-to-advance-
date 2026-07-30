@@ -1,46 +1,18 @@
-/* orders are stored in seprate tables order and orderarchie so display the combine table 
-withou dupilcates*/
+-- date function
 
-SELECT * 
+Select CreationTime,
+DATETRUNC(day,creationTime) as day_t,
+DATENAME(year,CreationTime) as year_name,
+DATENAME(MONTH,CreationTime) as  month_cr,
+DATENAME(day,CreationTime),
+DATENAME(hour,CreationTime),
+DATEpart(year,CreationTime)as year_name,
+Datepart(MONTH,CreationTime) as month_cr
+from Sales.Orders;
+
+-- present the sales for ecery month
+
+SELECT Datetrunc(month,CreationTime) as CreattionTime,
+count(*) as number_orders
 FROM Sales.Orders
-UNION
-Select * 
-FROM Sales.OrdersArchive;
-
-
-/* BEST PRACTICE USE THE COLUMNSNAM INSATADE OF STAR*/
-
-
-SELECT 
-       'Orders'  As SourceTable,
-       [OrderID]
-      ,[ProductID]
-      ,[CustomerID]
-      ,[SalesPersonID]
-      ,[OrderDate]
-      ,[ShipDate]
-      ,[OrderStatus]
-      ,[ShipAddress]
-      ,[BillAddress]
-      ,[Quantity]
-      ,[Sales]
-      ,[CreationTime]
-FROM Sales.Orders
-UNION
-SELECT
-       'OrdersArchive'  As SourceTable,
-       [OrderID]
-      ,[ProductID]
-      ,[CustomerID]
-      ,[SalesPersonID]
-      ,[OrderDate]
-      ,[ShipDate]
-      ,[OrderStatus]
-      ,[ShipAddress]
-      ,[BillAddress]
-      ,[Quantity]
-      ,[Sales]
-      ,[CreationTime]
-FROM Sales.OrdersArchive
-ORDER BY OrderID;
-
+Group BY Datetrunc(month,CreationTime);
