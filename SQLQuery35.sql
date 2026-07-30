@@ -29,7 +29,7 @@ count(*) as number_orders
 FROM Sales.Orders
 Group BY Datetrunc(MONTH,OrderDate)
 union
-SELECT Cast(Datetrunc(MONTH,OrderDate) as Date) as MonthOFORder,
+SELECT Cast(Datetrunc(MONTH,OrderDate) as Date) as order_date,
 count(*) as number_orders
 FROM Sales.OrdersArchive
 Group BY Datetrunc(MONTH,OrderDate);
