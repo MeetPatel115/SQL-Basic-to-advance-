@@ -16,3 +16,14 @@ SELECT Datetrunc(month,CreationTime) as CreattionTime,
 count(*) as number_orders
 FROM Sales.Orders
 Group BY Datetrunc(month,CreationTime);
+
+-- eomonth gives the last day of month 
+
+SELECT OrderID,
+CreationTime,
+EOMONTH(CreationTime),
+--start of month
+-- we use cast function to see what are imp like you can set to date to see date not time and set time to se time not date
+cast(DATETRUNC(month,CreationTime) as Date) as start_of_month,
+cast(CreationTime as Time) as start_of_month
+FROM Sales.Orders;
