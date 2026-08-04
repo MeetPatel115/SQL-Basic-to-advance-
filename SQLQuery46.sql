@@ -57,3 +57,18 @@ CASE country
 	else 'n/a'
 end as country
 from Sales.Customers
+
+
+/* count how many time each customer has made sale greater than 30*/
+
+Select
+
+CustomerID,
+
+	Sum(case 
+		when Sales>30 then 1
+		else 0
+	end) as higher_sales,
+	count(*) total_oders
+from Sales.Orders
+group by CustomerID
