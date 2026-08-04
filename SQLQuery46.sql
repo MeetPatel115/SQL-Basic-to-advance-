@@ -35,3 +35,25 @@ end
 as Gender_full
 FROM Sales.Employees
 
+/* retrival customer info with abberation*/
+SELECT 
+CustomerID,
+FirstName,
+CASE 
+	WHEN country='Germany' then 'Ge'
+	WHEN country='USA' then 'Us'
+	else 'n/a'
+end as country
+from Sales.Customers
+
+/* quick format for the case where every functon depend on sigle columns'*/
+
+SELECT 
+CustomerID,
+FirstName,
+CASE country
+	WHEN 'Germany' then 'Ge'
+	WHEN 'USA' then 'Us'
+	else 'n/a'
+end as country
+from Sales.Customers
