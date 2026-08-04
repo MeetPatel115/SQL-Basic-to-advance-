@@ -19,3 +19,19 @@ sum(Sales) as Total_sales
 group by price_range
 order by Total_sales desc
 
+
+/* case stament for the mapping the values */
+
+ 
+SELECT 
+EmployeeID,
+FirstName,
+LastName,
+Gender,
+CASE 
+	WHEN Gender='M' then 'MALE'
+	else 'FEMALE'
+end
+as Gender_full
+FROM Sales.Employees
+
