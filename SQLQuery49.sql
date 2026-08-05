@@ -55,3 +55,21 @@ Select
 	ntile(3) over(order by sales desc) threebucket,
 	ntile(4) over(order by sales desc) fourbucket
 from sales.Orders
+
+/* percentage based ranking */
+
+select *
+from
+(select
+	Product,
+	price,
+	CUME_DIST() over (order by price desc)as percentag_rank
+from Sales.Products)t
+where percentag_rank<0.4
+
+
+select
+	Product,
+	price,
+	CUME_DIST() over (order by price desc)as percentag_rank
+from Sales.Products
